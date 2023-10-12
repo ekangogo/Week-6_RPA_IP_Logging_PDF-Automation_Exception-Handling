@@ -109,7 +109,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReportStatus>
     <uas:GetUsernamePasswordX OrchestratorCredentialName="{x:Null}" TimeoutInSeconds="{x:Null}" AutosubmitTimeoutSeconds="3" Credential="[credentials]" CredentialName="UiPath: https://acme-test.uipath.com/login" CredentialsSource="CredentialsManager" DisplayName="Get Username/Password" sap:VirtualizedContainerService.HintSize="410,179.33333333333334" sap2010:WorkflowViewState.IdRef="GetUsernamePasswordX_1" />
-    <If sap2010:Annotation.AnnotationText="Checks if the ACME windows credentials have been successfully retrieved from the windows credentials manager" Condition="[Not String.IsNullOrEmpty(credentials.Username) or Not String.IsNullOrEmpty(credentials.Password)]" DisplayName="If Password exist in windows credential" sap:VirtualizedContainerService.HintSize="410,725.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Checks if the ACME windows credentials have been successfully retrieved from the windows credentials manager" Condition="[Not String.IsNullOrEmpty(credentials.Username) and Not String.IsNullOrEmpty(credentials.Password)]" DisplayName="If Password exist in windows credential" sap:VirtualizedContainerService.HintSize="410,725.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
