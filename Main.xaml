@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Credentials" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="614,1512.6666666666667" sap2010:WorkflowViewState.IdRef="Credentials_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:uas="clr-namespace:UiPath.Activities.System;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Credentials" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="614,1328" sap2010:WorkflowViewState.IdRef="Credentials_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:uas="clr-namespace:UiPath.Activities.System;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -88,7 +88,7 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This is the main workflow. It invokes either the secure credentials workflow path or user entered credentials workflow" DisplayName="Main Workflow - Credentials" sap:VirtualizedContainerService.HintSize="472,1448" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This is the main workflow. It invokes either the secure credentials workflow path or user entered credentials workflow" DisplayName="Main Workflow - Credentials" sap:VirtualizedContainerService.HintSize="472,1263.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="SecurePass" />
       <Variable x:TypeArguments="x:String" Name="User" />
@@ -109,8 +109,7 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReportStatus>
     <uas:GetUsernamePasswordX OrchestratorCredentialName="{x:Null}" TimeoutInSeconds="{x:Null}" AutosubmitTimeoutSeconds="3" Credential="[credentials]" CredentialName="UiPath: https://acme-test.uipath.com/login" CredentialsSource="CredentialsManager" DisplayName="Get Username/Password" sap:VirtualizedContainerService.HintSize="410,179.33333333333334" sap2010:WorkflowViewState.IdRef="GetUsernamePasswordX_1" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Get Username/Password have been retrieved? &quot;+Result.ToString]" />
-    <If sap2010:Annotation.AnnotationText="Checks if the ACME windows credentials have been successfully retrieved from the windows credentials manager" Condition="[Result=False]" DisplayName="If Password exist in windows credential" sap:VirtualizedContainerService.HintSize="410,725.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Checks if the ACME windows credentials have been successfully retrieved from the windows credentials manager" Condition="[Not String.IsNullOrEmpty(credentials.Username) or Not String.IsNullOrEmpty(credentials.Password)]" DisplayName="If Password exist in windows credential" sap:VirtualizedContainerService.HintSize="410,725.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
